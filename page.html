@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+{% block subtitle %}
+    <ul class="breadcrumb">
+        <!--<li><a href="/">Home</a></li>-->
+        {% for x in breadcrumbs %} 
+            <li><a href="/category/{{ x.slug }}">{{ x.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock subtitle %}
+
+{% block sidenav %}
+    <!--{% for page in page_list %}
+        {% if not page.category %}
+            <li>
+                <a href="{{ page.permalink }}">{{ page.title }}</a>
+            </li>
+        {% endif %}
+    {% endfor %}-->
+    <li><a href="/">Home</a></li>
+    <li><a href="/services">Services</a></li>
+    <li><a href="/about">About Me</a></li>
+    <li><a href="/featured">Featured Posts</a></li>
+    <li><a href="/recent">Recent Posts</a></li>
+{% endblock sidenav %}
+
+{% block navigation %}
+    <a href="/">Home</a>
+    <a href="/services">Services</a>
+    <a href="/about">About Me</a>
+    <a href="/todo" class="right">To Do</a>
+{% endblock navigation %}
+
+{% block content %}
+{% autoescape off %}
+{{content}}
+{% endautoescape %}
+<p>
+    <small><i>Page last updated: {{ last_updated|date:'D d F Y' }}</i></small>
+</p>
+{% endblock content %}

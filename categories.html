@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.set }}{% endblock title %}
+
+{% block content %}
+{% autoescape off %}
+{{ content }}
+{% endautoescape %}
+<br>
+{% if sub_categories %}
+  <h3>Sub Categories</h3>
+  {% for i in sub_categories %}
+    <div class="columns">
+    <a href="{{ i.slug }}">{{ i.name }}</a>
+    </div>
+  {% endfor %}
+{% endif %}
+
+<div class="row large-up-1 medium-up-3" >
+{% if page_set %}
+{% for i in page_set %}
+    <div class="columns">
+    <a href="{{ i.permalink }}">
+        <!--<img src="{{ i.cover_photo.url }}">-->
+    </a>
+    <div class="card-section">
+    <a href="{{ i.permalink }}">
+        <h6 class="article-title">{{ i.title | truncatechars:30}}</h6>
+    </a>
+    </div>
+    <div class="card-divider flex-container align-middle">
+    </div>
+    <div class="hover-border">
+    </div>
+    </div>
+{% endfor %}
+{% endif %}
+</div>
+{% endblock content %}
+    
+{% block subtitle %}
+{% endblock subtitle %}
+
+{% block sidenav %}
+    <li><a href="/">Home</a></li>
+    <li><a href="/to_do">To Do</a></li>
+    <li><a href="/services">Services?</a></li>
+    <li><a href="/about">About Me</a></li>
+{% endblock sidenav %}

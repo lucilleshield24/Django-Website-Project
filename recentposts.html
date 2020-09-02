@@ -1,0 +1,16 @@
+{% extends "pages/page.html" %}
+
+{% block content %}
+    {% for page in page_list %}
+        {% if page.category %}
+            <ul>
+            <a href="{{ page.permalink }}">{{ page.title }}</a>........{{ last_updated }}
+            </ul>
+        {% endif %}
+        
+    {% endfor %}
+<p>
+    <small><i>Page last updated: {{ last_updated|date:'D d F Y' }}</i></small>
+</p>
+
+{% endblock content %}
