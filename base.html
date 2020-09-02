@@ -1,0 +1,107 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>
+    {% block title %}
+        Untitled Document
+    {% endblock title %}
+</title>
+<link href="{% static 'main.css' %}" rel="stylesheet" type="text/css">
+<style>
+.navbar {
+    overflow: hidden;
+    background-color: #4b2e83;
+}
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.navbar a.right {
+    float: right;
+}
+.navbar a:hover {
+    background-color: #b7a57a;
+    color: #4b2e83;
+    font-weight: bold;
+}
+
+.side {
+    height: 100%;
+    width: 160 px;
+    background-color: #663399;
+    padding-top: 20px;
+    position: fixed;
+    z-index: 1;
+    top: 8px;
+    left: 0;
+}
+.side a {
+    padding: 6px 20px 6px 3px;
+    color: #b7a57a;
+    text-decoration: none;
+    font-size: 25px;
+    display: block;
+}
+.side a:hover {
+    color: #f1f1f1;
+    background-color: #4b2e83;
+}
+.main {
+    margin-left: 160 px;
+    padding: 0px 20px;
+}
+</style>
+</head>
+
+<body>
+<div id="wrapper">
+  <header id="header">
+    <!-- <div id="logo"><img src="{% static 'ladybug_logo.jpg' %}" alt=""/></div> -->
+    <div id="topbanner"><img src="{% static 'DjangoHeader.jpg' %}" width="800" height="200" alt=""/></div> 
+
+  </header>
+
+<div class="navbar">
+    {% block navigation %}
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+    <a href="#" class="right">Link 4</a>
+    {% endblock navigation %}
+</div>
+
+<div class="row">
+  <section id="subtitle">
+    {% block subtitle %}
+    <p>This is the subtitle!</p>
+    {% endblock subtitle %}
+  </section>
+  
+  <div class="side">
+    <ul>
+      {% block sidenav %}
+      <li>Menu 1</li><li>Menu 2</li><li>Menu 3</li></ul>
+      {% endblock sidenav %}
+    </ul>
+  </div>
+  
+  <div class="main">
+    <h1 style="text-align:center;">{{ title }}</h1>   
+    {% block content %}
+    <h1>Welcome!</h1>
+    <p>This is the site template</p>
+    {% endblock content %}
+  </div>
+</div>
+
+  <footer id="footer">Copyright &copy; 2020 N/A</footer>
+</div>
+</body>
+</html>
